@@ -1,0 +1,158 @@
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid black;
+}
+.logo {
+  width: 100px;
+}
+
+.nav-items {
+  padding: 0px 20px;
+}
+
+.nav-items > ul {
+  fontsize: 24px;
+  display: flex;
+  list-style: none;
+}
+
+.nav-items > ul > li {
+  padding: 10px;
+  margin: 10px;
+}
+
+.search {
+  margin: 10px;
+  padding: 10px;
+}
+
+.search-input {
+  padding: 10px;
+  font-size: 16px;
+}
+
+
+.footer{
+  background-color: #f8f8f8;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid black;
+  font-size: 14px;
+  color: #666;
+  cursor: pointer;
+  transition: color 0.3s;
+  
+}
+
+
+.restaurant-card {
+  width: 220px;
+  height: 400px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justifycontent: center;
+  border: 3px solid rgb(77, 38, 114);
+  margin:23px;
+  line-height:18px;
+  border-radius: 20px;
+}
+h3{
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-size: 18px;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  color: rgb(128, 64, 114);
+}
+
+img{
+  border-radius: 10px;
+  border: 2px solid rgb(255, 0, 157)
+}
+
+.restaurant-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 5px;
+}
+.restaurant-card:hover {
+  border: 2px solid black;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  background-color: rgba(179, 179, 179, 0.8);
+  cursor: pointer;
+}
+
+.res-logo {
+  width: 100%;
+  height: 40%;
+}
+.filter-btn,.search-btn {
+  background-color: #ff5733;
+  margin-top : 20px;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+  margin:20px;
+}
+
+.filter-btn:hover {
+  background-color: #e64a19;
+}
+.nav-items > ul > li:hover {
+  color: red;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.shimmer-card{
+  width: 220px;
+  height: 400px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justifycontent: center;
+  border: 3px solid rgb(107, 101, 112);
+  background:lightgray;
+  margin:23px;
+  line-height:18px;
+  border-radius: 20px;
+
+}
+
+.search-box{
+  width: 200px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.shimmer-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 5px;
+}
+
+.login-btn {
+  background-color: #ff5733;
+  margin-top : 20px;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+.filter {
+  display: flex;
+  /* justify-content: space-between; */
+}

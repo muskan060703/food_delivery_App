@@ -1,0 +1,87 @@
+const restaurantList = [
+    {
+      id: "658210",
+      name: "The Fusion Lounge",
+      imageId: "fa4944f0cfdcbca2bec1f3ab8e3db3f7",
+      costForTwo: "₹300 for two",
+      cuisines: ["South Indian", "Chinese", "Beverages", "Fast Food", "Desserts"],
+      avgRating: 4.1,
+      deliveryTime: 58,
+    },
+    {
+      id: "151649",
+      name: "Hotel Sai Nath & Sai Restaurant",
+      imageId: "vkhcohhmqfczycw9vsar",
+      costForTwo: "₹200 for two",
+      cuisines: [
+        "North Indian",
+        "South Indian",
+        "Chinese",
+        "Beverages",
+        "Fast Food",
+        "Desserts",
+      ],
+      avgRating: 4.3,
+      deliveryTime: 48,
+    },
+    {
+      id: "151656",
+      name: "Dev International",
+      imageId: "enj3srsnhbltbom2ovvh",
+      locality: "Khajri Road, Mohan Nagar",
+      costForTwo: "₹100 for two",
+      cuisines: ["North Indian", "Chinese", "Fast Food", "Beverages"],
+      avgRating: 4.3,
+      deliveryTime: 54,
+      discount: "₹125 OFF ABOVE ₹349",
+    },
+    {
+      id: "150591",
+      name: "Satkar Restaurant",
+      imageId: "rvxp5xbniat84r6efku2",
+      costForTwo: "₹250 for two",
+      cuisines: ["North Indian", "South Indian", "Indian", "Salads", "Desserts"],
+      avgRating: 4.4,
+      deliveryTime: 44,
+    },
+    {
+      id: "385824",
+      name: "The Belgian Waffle Co.",
+      imageId:
+        "RX_THUMBNAIL/IMAGES/VENDOR/2025/1/17/a38d20d7-bbb7-4b67-8bdd-7740e85cd4af_385824.JPG",
+      costForTwo: "₹200 for two",
+      cuisines: ["Waffle", "Desserts", "Ice Cream", "Beverages"],
+      avgRating: 4.6,
+      deliveryTime: 47,
+    },
+    {
+      id: "151518",
+      name: "Bakery World",
+      imageId: "mt2aggiscfl3yviatwng",
+      costForTwo: "₹250 for two",
+      cuisines: ["Bakery", "Ice Cream", "Snacks", "Beverages"],
+      avgRating: 4.4,
+      deliveryTime: 46,
+    },
+    {
+      id: "150597",
+      name: "Scoops Fast Food And Ice Cream",
+      imageId: "fm3rs3g6z7ibfhesmxnu",
+      costForTwo: "₹200 for two",
+      cuisines: ["Bakery", "Ice Cream", "Snacks", "Beverages"],
+      avgRating: 4.1,
+      deliveryTime: 54,
+    },
+    {
+      id: "234875",
+      name: "Adil Hotel",
+      imageId: "gp1ityra6utvzqn6ghnv",
+      costForTwo: "₹150 for two",
+      cuisines: ["North Indian", "Biryani", "Tandoor"],
+      avgRating: 4.3,
+      deliveryTime: 43,
+    }
+  ];
+  
+  export default restaurantList;
+  
