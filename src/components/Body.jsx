@@ -3,12 +3,14 @@ import Footer from "./Footer";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import RestaurantCard from "./RestaurantCard";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import RestaurantCard, { withPromotedLabel } from "./RestaurantCard";
+
 const Body = () => {
   const [searchText, setSearchText] = useState("");
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
+  const restaurantCardPromoted = withPromotedLabel(RestaurantCard);
 
   useEffect(() => {
     fetchData();
@@ -19,13 +21,16 @@ const Body = () => {
       const data = await fetch(
         "https://www.swiggy.com/dapi/restaurants/list/v5?lat=21.99740&lng=79.00110&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
       );
-      
+
       const jsonData = await data.json();
-      console.log("Json : ",jsonData.data.cards[4])
+      console.log("Json :", jsonData?.data?.cards[4]);
+
       const restaurant =
         jsonData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
           ?.restaurants || [];
-          
+
+      console.log("List of restaurant", restaurant);
+
       setListOfRestaurants(restaurant);
       setFilteredRestaurants(restaurant);
     } catch (e) {
@@ -34,10 +39,13 @@ const Body = () => {
   };
 
   const onlineStatus = useOnlineStatus();
-  
-  if(!onlineStatus) return <h1>Looks like you are offline .Please check your internet connection</h1>
 
-  if (listOfRestaurants.length == 0) {
+  if (!onlineStatus)
+    return (
+      <h1>Looks like you are offline. Please check your internet connection.</h1>
+    );
+
+  if (listOfRestaurants.length === 0) {
     return <Shimmer />;
   }
 
@@ -56,19 +64,12 @@ const Body = () => {
                 listOfRestaurants.filter((restaurant) =>
                   restaurant.info.name
                     .toLowerCase()
-                    .includes(searchText.toLowerCase())
+                    .includes(e.target.value.toLowerCase()) // ✅ Use e.target.value directly
                 )
               );
             }}
           />
-          <button
-            className="search-btn"
-            onClick={() => {
-              console.log("Search text : ", searchText);
-            }}
-          >
-            Search
-          </button>
+          <button className="search-btn">Search</button>
         </div>
         <button
           className="filter-btn"
@@ -87,18 +88,31 @@ const Body = () => {
       </div>
 
       <div className="restaurant-container">
-        {filteredRestaurants.map((restaurant) => (
-          <Link to={`/restaurant/${restaurant.info.id}`}>
-            <RestaurantCard
-              key={restaurant.info.id}
-              name={restaurant.info.name}
-              cloudinaryImageId={restaurant.info.cloudinaryImageId}
-              rating={restaurant.info.avgRating}
-              cuisine={restaurant.info.cuisines}
-              deliveryTime={restaurant.info.sla.deliveryTime}
-            />
-          </Link>
-        ))}
+        {filteredRestaurants.map((restaurant) => {
+          const isPromoted = restaurant.info.open; // Assume 'promoted' is a property
+
+          return (
+            <Link to={`/restaurant/${restaurant.info.id}`} key={restaurant.info.id}>
+              {isPromoted ? (
+                <restaurantCardPromoted
+                  name={restaurant.info.name}
+                  cloudinaryImageId={restaurant.info.cloudinaryImageId}
+                  rating={restaurant.info.avgRating}
+                  cuisine={restaurant.info.cuisines}
+                  deliveryTime={restaurant.info.sla.deliveryTime}
+                />
+              ) : (
+                <RestaurantCard
+                  name={restaurant.info.name}
+                  cloudinaryImageId={restaurant.info.cloudinaryImageId}
+                  rating={restaurant.info.avgRating}
+                  cuisine={restaurant.info.cuisines}
+                  deliveryTime={restaurant.info.sla.deliveryTime}
+                />
+              )}
+            </Link>
+          );
+        })}
       </div>
       <Footer />
     </div>
