@@ -1,11 +1,17 @@
 import "./App.css";
-import About from "./components/About";
-import { Header } from "./components/Header";
+import  {lazy,Suspense} from "react";
 import Body from "./components/Body";
-import Contact from "./components/Contact";
 import Error from "./components/Error";
-import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import About from "./components/About";
+import Contact from "./components/Contact";
+// import Grocery from "./components/Grocery";
+import { Header } from "./components/Header";
 import RestaurantMenu from "./components/RestaurantMenu";
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+
+const Grocery = lazy(()=> import("./components/Grocery")) //this import is a function not same as the above imports 
+//this will now take the path to go to the grocery 
+//importing the grocery component using lazy function 
 
 function AppLayout() {
   return (
@@ -33,6 +39,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact />,
+      },
+      {
+        path : "/grocery",
+        element : <Suspense fallback = {<h2>Loading</h2>}><Grocery/></Suspense>,
       },
       {
         path : "/restaurant/:resId",

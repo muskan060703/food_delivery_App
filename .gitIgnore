@@ -1,0 +1,33 @@
+# Node modules
+node_modules/
+
+# Build output
+dist/
+.vite/
+
+# Environment variables
+.env
+.env.*.local
+
+# Logs and debug files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Editor and OS files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+
+# Testing and coverage
+coverage/
+tests/
+cypress/screenshots/
+cypress/videos/
+
+# Miscellaneous
+*.lock

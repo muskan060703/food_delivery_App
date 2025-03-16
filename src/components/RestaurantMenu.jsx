@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { CDN_URL } from "../utils/constants";
 import { useParams } from "react-router-dom";
 import { MENU_API } from "../utils/constants";
+import useRestaurantMenu from "../utils/useRestaurantMenu"; 
 const RestaurantMenu = () => {
   const [menuItems, setMenuItems] = useState([]);
   const [restaurant, setRestaurant] = useState({});
@@ -12,10 +13,8 @@ const RestaurantMenu = () => {
     fetchMenu();
   }, []);
 
+  const restaurantInfo = useRestaurantMenu(resId);
   const fetchMenu = async () => {
-    // const response = await fetch(
-    //   "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=30.681639921297&lng=76.73262100992038&restaurantId=743869&catalog_qa=undefined&submitAction=ENTER"
-    // );
     const response = await fetch(
       `${MENU_API}${resId}`
     );
@@ -30,6 +29,8 @@ const RestaurantMenu = () => {
         .itemCards
     );
     const restaurantInfo = jsonData.data.cards[2].card.card.info;
+    console.log(restaurantInfo);
+    
 
     const menu = {
       name: restaurantInfo.name,
